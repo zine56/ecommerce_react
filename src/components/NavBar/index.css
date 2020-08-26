@@ -1,0 +1,16 @@
+nav {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: left;
+    background-color: #343a40;
+}
+
+.menu {
+    width: 50%;
+    margin-right: 0px !important;
+    display: inline;
+    float: left;
+    
+}
