@@ -5,16 +5,23 @@ import Button from 'react-bootstrap/Button';
 import './index.css';
 
 export const LikeButton = (props) => {
+    const limiteSuperior = 20;
+    const limiteInferior = 0;
+
     const [count, setCount] = useContext(CounterContext)
 
     const incrementar = () => {
-        setCount((count + 1));
+
+        if(count < limiteSuperior){
+            setCount((count + 1));
+        }         
     }
 
     const decrementar = () => {
-        setCount((count - 1));
+        if(count > limiteInferior){
+          setCount((count - 1));
+        } 
     }
-
 
     return (
         <div className = ''>
