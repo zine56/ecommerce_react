@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 import './index.css';
 
-export const Product = (props) => {
+export const Item = (props) => {
     const [cart, setCart] = useContext(CartContext)
 
     const agregarAlCarro = () => {
