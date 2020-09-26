@@ -15,8 +15,8 @@ import './App.css';
 import { LikeButton } from './components/LikeButton';
 import { LikeCounter } from './components/LikeCounter';
 
-import { Switch, Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { CartList } from './components/CartList';
 export default class App extends Component {
 
@@ -29,7 +29,7 @@ export default class App extends Component {
 
     return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
 
       <header className="App-header">        
         <CartProvider>
@@ -51,12 +51,12 @@ export default class App extends Component {
           
           
           </Route>
-        <Route path='/products'>
+        <Route exact path='/products'>
               <ItemList type="all" />
         </Route>
-        <Route path='/product/:id' component={ItemDetail}>
+        <Route exact path='/product/:id' component={ItemDetail}>
         </Route>
-        <Route path='/cartlist'>
+        <Route exact path='/cartlist'>
           <CartList/>
         </Route>
         </Switch>
@@ -66,7 +66,7 @@ export default class App extends Component {
 
       </header>
 
-      </BrowserRouter>
+      </Router>
 
     </div>)
   }
