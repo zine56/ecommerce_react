@@ -112,19 +112,29 @@
 .title-product{}
 
 .item-block-title{
-  width:400px;
-  display: table-cell;
+  width:50%;
+  float:left;
+  text-align: right;
+}
+.item-block-count{
+  width: 30%;
+  float:left;
   text-align: right;
 }
 .item-block-price{
-  width:50px;
-  display: table-cell;
+  width: 20%;
+  float:left;
   text-align: right;
-  padding-left:8px;
 }
 .cart-list{
   width:80%;
 }
 .margin-white{
   border-top:1px solid white;
+}
+.cart-line {
+  clear:both;
+  width:100%;
+  padding-left:10px;
+  padding-right:10px;
 }

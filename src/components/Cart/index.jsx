@@ -15,7 +15,7 @@ export const Cart  = () => {
     return (
       <NavLink 
       className="Header-List-Link"
-      to="/cartlist"
+      to="/cart"
     >
         <div className='cart'>
 

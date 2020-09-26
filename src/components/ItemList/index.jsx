@@ -17,7 +17,7 @@ let updateData = () => {
   setLoading(true);
   let promise = new Promise((resolve,reject)=>{
       setTimeout(function(){
-        fetch(`https://fakestoreapi.com/products${ props.type === 'all' ? '' : '?limit=4&sort=asc'  }`)
+        fetch(`https://fakestoreapi.com/products${ props.type === 'all' ? '?sort=desc' : '?limit=3&sort=asc'  }`)
         .then(res => res.json())
         .then(json => { 
           console.log("desde la api",json) 

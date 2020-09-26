@@ -56,7 +56,7 @@ export default class App extends Component {
         </Route>
         <Route exact path='/product/:id' component={ItemDetail}>
         </Route>
-        <Route exact path='/cartlist'>
+        <Route exact path='/cart'>
           <CartList/>
         </Route>
         </Switch>
