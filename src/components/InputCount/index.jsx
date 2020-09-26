@@ -8,11 +8,11 @@ import React from 'react';
  *
  * @return {JSX}  The JSX element to render.         
  */
-function Input(props) {
+function InputCount(props) {
   console.log(props);
   return (
     <input onChange={props.handleChange} value={props.count}/>
   )
 }
 
-export default Input;
+export default InputCount;

@@ -1,0 +1,21 @@
+.cart-icon-container {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+.cart-overlay {  
+    width: 26px;
+    position: absolute;
+    right: 0px;
+    z-index: 53;
+    color: blue;
+    text-align: center;
+    text-shadow: 1px 1px blue;
+}
+.cart-icon-fa{
+    width: auto;
+    position: absolute;
+    right: 0;
+    font-size: 30px;
+    top: -6px;
+}

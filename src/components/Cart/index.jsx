@@ -19,13 +19,11 @@ export const Cart  = () => {
     >
         <div className='cart'>
 
-<CartIcon/>
-<span className='cart-text'>
-   
-</span>
-<span className='cart-text'>
-   Total : ${ precio.toFixed(2) }     {cart.length > 0 ? '(' + cart.length + 
-    ' Productos)': ''}
+<span className='cart-text cart-summary-line'>
+   Total : ${ precio.toFixed(2) } 
+
+<CartIcon count={cart.length}/>
+
 </span>          
 </div>
     </NavLink>

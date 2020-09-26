@@ -2,12 +2,13 @@ import React, { Component, useState, useEffect, useContext} from 'react';
 import { CartContext } from '../CartContext';
 
 import  ButtonBuy from '../ButtonBuy';
-import  Input from '../Input';
+import  InputCount from '../InputCount';
 
 import './index.css';
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from 'react-bootstrap/Button';
+import {ItemCount} from '../ItemCount';
 
 
  class ItemDetail extends Component {
@@ -16,7 +17,8 @@ import Button from 'react-bootstrap/Button';
   constructor(props) {
     super(props);
     this.state = {
-      data: null,count:0
+       data: null
+      ,count:0
     };
     this.handleChange = this.handleChange.bind(this);
 
@@ -65,7 +67,6 @@ import Button from 'react-bootstrap/Button';
     });
   }
 
-
   handleAdd = () => {
       this.setState((state) => ({
         count: state.count + 1,
@@ -89,20 +90,11 @@ import Button from 'react-bootstrap/Button';
                   <div>
                     ${this.state.data.price}
                   </div>
-                  <div>
-                  <ButtonBuy
-                    onClick={this.handleSubstract}
-                      sign={"-"}
-                    />
-                    <Input
-                      count={this.state.count}
-                      handleChange={this.handleChange}
-                    />
-                    <ButtonBuy
-                      onClick={this.handleAdd}
-                      sign={"+"}
-                    />
-                    <Button onClick={this.agregarAlCarro}>Comprar</Button>
+                  <div> 
+
+                    <ItemCount count={this.state.count} handleAdd={this.handleAdd} handleSubstract={this.handleSubstract} 
+                    handleChange={this.handleChange} />
+  <Button onClick={this.agregarAlCarro}>Comprar {this.state.count ? this.state.count : ''}</Button>
                   </div>          
     </div>
     
