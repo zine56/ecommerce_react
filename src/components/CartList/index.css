@@ -1,0 +1,15 @@
+
+.cart-text{
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+.cart {
+    width: 45%;
+    float: right;
+    padding-top: 4px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+

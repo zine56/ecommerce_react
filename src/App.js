@@ -5,9 +5,10 @@ import { CounterProvider } from "./components/CounterContext";
 
 import Home from "./components/Home";
 import Card from 'react-bootstrap/Card';
-import { ItemList } from './components/ProductList';
+import { ItemList } from './components/ItemList';
 
 import { Item } from './components/Item';
+import ItemDetail from './components/ItemDetail';
 
 import logo from './logo.svg';
 import './App.css';
@@ -16,40 +17,15 @@ import { LikeCounter } from './components/LikeCounter';
 
 import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { CartList } from './components/CartList';
 export default class App extends Component {
 
   constructor() {
     super();
-    console.log('constructor()');
-    this.state = {
-      data:[]
-    }
-  }
-  componentDidMount() {
-    
-
-    let promise = new Promise((resolve,reject)=>{
-      setTimeout(function(){
-        resolve([
-          {name:'Gladiator',stock:100,price:10000,id:1,img:'https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg'},
-          {name:'Men in black',stock:100,price:12000,id:2,img:'https://m.media-amazon.com/images/M/MV5BOTlhYTVkMDktYzIyNC00NzlkLTlmN2ItOGEyMWQ4OTA2NDdmXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UX182_CR0,0,182,268_AL_.jpg'},
-          {name:'Happy Gilmore',stock:100,price:7000,id:3,img:'https://m.media-amazon.com/images/M/MV5BZWI2NjliOTYtZjE1OS00YzAyLWJjYTQtYWNmZTQzMTQzNzVjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg'},
-        ])
-      },5000)
-    })
-
-
-   promise.then( result => {
-      this.setState({data:result}) 
-   }, function(error) {
-      this.setState({data:[]}) 
-   });
-
 
   }
+  
   render (){
-
-
 
     return (
     <div className="App">
@@ -60,9 +36,7 @@ export default class App extends Component {
         <NavBar/>
         <Switch>
           <Route exact path='/'>
-            <ItemList products={this.state.data} />
-
-
+            <ItemList type="offers" />
             <div>
               <div>
                 <CounterProvider>
@@ -77,9 +51,13 @@ export default class App extends Component {
           
           
           </Route>
-
-        <Route path='/product/:id'>
-              <Item data={this.data} />
+        <Route path='/products'>
+              <ItemList type="all" />
+        </Route>
+        <Route path='/product/:id' component={ItemDetail}>
+        </Route>
+        <Route path='/cartlist'>
+          <CartList/>
         </Route>
         </Switch>
 

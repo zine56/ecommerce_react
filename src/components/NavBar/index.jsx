@@ -5,6 +5,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Cart from '../Cart';
 
 import './index.css';
+import { NavLink } from 'react-router-dom';
+
 
 class NavBar extends Component {
 
@@ -12,17 +14,34 @@ class NavBar extends Component {
       
     return (<nav>
           <div className="menu">
-          <Dropdown>
-          <Dropdown.Toggle variant="dark" id="dropdown-basic">
-            Tienda de Ricardo
-          </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Peliculas</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Videojuegos</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Libros</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+            <span
+              className='Header-List-Item'
+              key="1"
+            >
+              <NavLink 
+                className="Header-List-Link"
+                to="/"
+              >
+                Home
+              </NavLink>
+            </span>
+
+            <span
+              className='Header-List-Item'
+              key="2"
+            >
+              <NavLink 
+                className="Header-List-Link"
+                to="/products"
+              >
+                Productos
+              </NavLink>
+            </span>
+
+
+
+
         </div>
         <Cart/>
         </nav>);

@@ -84,3 +84,47 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+
+.Header-List-Link , .title-product, .price-product{
+  text-decoration: none;
+  padding: 5px;
+  color: white !important;
+}
+
+.Header-List-Link:active, .title-product:active, .price-product:active{
+  text-decoration: none;
+  padding: 5px;
+  color: white !important;
+}
+
+.Header-List-Link:hover, .title-product:hover, .price-product:hover{
+  text-decoration: none;
+  padding: 5px;
+  color: white !important;
+}
+
+.img-product{
+  width:100px;
+  height:150px;
+}
+
+.title-product{}
+
+.item-block-title{
+  width:400px;
+  display: table-cell;
+  text-align: right;
+}
+.item-block-price{
+  width:50px;
+  display: table-cell;
+  text-align: right;
+  padding-left:8px;
+}
+.cart-list{
+  width:80%;
+}
+.margin-white{
+  border-top:1px solid white;
+}
