@@ -17,7 +17,7 @@ export const CartList  = () => {
     if(cart){
       cart.forEach((item)=>{
         if(!itemObj[item.id])
-          itemObj[item.id] = { title:item.name , price:0, count:0, unitary:parseFloat(item.price) }
+          itemObj[item.id] = { name:item.name , price:0, count:0, unitary:parseFloat(item.price) }
         itemObj[item.id].price+=parseFloat(item.price) 
         itemObj[item.id].count++;
       })

@@ -10,7 +10,7 @@ export const Item = (props) => {
     const [cart, setCart] = useContext(CartContext)
 
     const agregarAlCarro = () => {
-        const product  = {title: props.data.name, price: parseFloat(props.data.price), id: props.data.id   }
+        const product  = {name: props.data.name, price: parseFloat(props.data.price), id: props.data.id   }
         setCart(curr => [...curr, product]);
     }
     const handleImageError= (ev) => {

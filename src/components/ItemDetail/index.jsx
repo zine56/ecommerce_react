@@ -28,12 +28,12 @@ import {db} from '../../services/firestore';
       .doc(this.props.match.params.id)
       .get()
       .then(doc => {
-        console.log(doc.exists,"lala")
+
         if(!doc.exists){
           this.setState({data:{}, count:0}) 
         } else {
           const data = {id:doc.id,...doc.data()};
-          console.log("FIRSEBASE",data); //
+
           this.setState({data:data, count:0}) 
         }
       }).catch((error)=>{
@@ -49,7 +49,7 @@ import {db} from '../../services/firestore';
       if(!this.state.count)
         return;
       const [cart, setCart] = this.context
-      const product  = {title: this.state.data.name, price: parseFloat(this.state.data.price), id: this.state.data.id   }
+      const product  = {name: this.state.data.name, price: parseFloat(this.state.data.price), id: this.state.data.id   }
       let arrProducts = [];
       for(let i=0;i<this.state.count;i++){
         arrProducts.push(product)
@@ -86,7 +86,7 @@ import {db} from '../../services/firestore';
 
   render(){
 
-    console.log("IMAGENN",this.state.data)
+
     let image = (this.state.data && this.state.data.image ? this.state.data.image : '');
     return (
       
@@ -107,8 +107,7 @@ import {db} from '../../services/firestore';
                     Descripcion:
                   </div> 
                   
-                  <div>
-                    {this.state.data.description}
+                  <div  dangerouslySetInnerHTML={{ __html: this.state.data.description }} >
                   </div>          
     </div>
     
