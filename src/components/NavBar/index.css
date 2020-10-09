@@ -10,9 +10,21 @@ nav {
 .menu {
     padding-top: 5px;
     padding-left: 5px;
-    width: 50%;
+    width: 33%;
     margin-right: 0px !important;
     display: inline;
+    float: left;    
+}
+.Header-List-Item > .show{
+    display:inline;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:inline !important;
+}
+
+.title-navbar{ 
+    width: 33%;
     float: left;
-    
+    text-align: center;
 }

@@ -1,15 +1,12 @@
-import React, { Component, useState, useEffect, useContext} from 'react';
+import React, { Component} from 'react';
 import { CartContext } from '../CartContext';
-
-import  ButtonBuy from '../ButtonBuy';
-import  InputCount from '../InputCount';
-
 import './index.css';
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from 'react-bootstrap/Button';
 import {ItemCount} from '../ItemCount';
 
+import {db} from '../../services/firestore';
 
  class ItemDetail extends Component {
   static contextType = CartContext
@@ -24,25 +21,26 @@ import {ItemCount} from '../ItemCount';
 
   }
   async componentDidMount() {
+      
 
     if (this.props.match.params) {
-
-      let promise = new Promise((resolve,reject)=>{
-          fetch(`https://fakestoreapi.com/products/${ this.props.match.params.id }`)
-          .then(res => res.json())
-          .then(json => { 
-            console.log("desde la api",json) 
-            resolve(json)
-          })
-      })
-  
-  
-     promise.then( result => {
-        this.setState({data:result, count:0}) 
-     }, function(error) {
-        this.setState({data:null, count:0})
-     });
-
+      db.collection("products")
+      .doc(this.props.match.params.id)
+      .get()
+      .then(doc => {
+        console.log(doc.exists,"lala")
+        if(!doc.exists){
+          this.setState({data:{}, count:0}) 
+        } else {
+          const data = {id:doc.id,...doc.data()};
+          console.log("FIRSEBASE",data); //
+          this.setState({data:data, count:0}) 
+        }
+      }).catch((error)=>{
+        this.setState({data:[], count:0}) 
+      }).finally(()=>{
+        //parar loader
+      }); 
     }
   }
 
@@ -51,7 +49,7 @@ import {ItemCount} from '../ItemCount';
       if(!this.state.count)
         return;
       const [cart, setCart] = this.context
-      const product  = {title: this.state.data.title, price: this.state.data.price, id: this.state.data.id   }
+      const product  = {title: this.state.data.name, price: parseFloat(this.state.data.price), id: this.state.data.id   }
       let arrProducts = [];
       for(let i=0;i<this.state.count;i++){
         arrProducts.push(product)
@@ -81,20 +79,36 @@ import {ItemCount} from '../ItemCount';
         data:this.state.data
       }));
   }
+
+  handleImageError(ev){
+    ev.target.src = 'https://via.placeholder.com/150x200/FFFFFF/000000/?text=Sin%20imagen'
+  }
+
   render(){
+
+    console.log("IMAGENN",this.state.data)
+    let image = (this.state.data && this.state.data.image ? this.state.data.image : '');
     return (
-    
+      
     (!this.state.data) ?  <div className='empty-product-list'> <FontAwesomeIcon icon={faSpinner} spin /> Cargando...</div>: <div>
-                      <div><img src={this.state.data.image} className='img-product' /></div>
-                <div>{this.state.data.title}</div> 
+                      <div><img src={image} className='img-product' onError={this.handleImageError} alt="producto" /></div>
+                <div>{this.state.data.name}</div> 
                   <div>
-                    ${this.state.data.price}
+                    ${parseFloat(this.state.data.price).toFixed(2)}
                   </div>
                   <div> 
 
                     <ItemCount count={this.state.count} handleAdd={this.handleAdd} handleSubstract={this.handleSubstract} 
                     handleChange={this.handleChange} />
   <Button onClick={this.agregarAlCarro}>Comprar {this.state.count ? this.state.count : ''}</Button>
+                  </div>
+                  
+                  <div>
+                    Descripcion:
+                  </div> 
+                  
+                  <div>
+                    {this.state.data.description}
                   </div>          
     </div>
     

@@ -1,13 +1,7 @@
-import React, { Component, useState, useEffect, useContext} from 'react';
-import { CartContext } from '../CartContext';
+import React from 'react';
 
 import  ButtonBuy from '../ButtonBuy';
 import  InputCount from '../InputCount';
-
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from 'react-bootstrap/Button';
-
 
 export const ItemCount = (props) => {
     console.log(props)

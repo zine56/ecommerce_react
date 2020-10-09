@@ -1,8 +1,6 @@
-import React, { Component, useContext } from "react";
+import React, { useContext } from "react";
 
-import Dropdown from 'react-bootstrap/Dropdown';
 import { CartContext } from '../CartContext';
-import CartIcon from '../CartIcon';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
@@ -19,8 +17,8 @@ export const CartList  = () => {
     if(cart){
       cart.forEach((item)=>{
         if(!itemObj[item.id])
-          itemObj[item.id] = { title:item.title , price:0, count:0, unitary:item.price }
-        itemObj[item.id].price+=item.price 
+          itemObj[item.id] = { title:item.name , price:0, count:0, unitary:parseFloat(item.price) }
+        itemObj[item.id].price+=parseFloat(item.price) 
         itemObj[item.id].count++;
       })
     } 
@@ -47,8 +45,8 @@ export const CartList  = () => {
           {
           Object.keys(itemObj).map( (key) => {
           return <div key={key}  className='cart-line  ' >
-            <div className="item-block-title">{itemObj[key].title}</div>   
-            <div className="item-block-price">${itemObj[key].price}</div>   
+            <div className="item-block-title">{itemObj[key].name}</div>   
+            <div className="item-block-price">${parseFloat(itemObj[key].price)}</div>   
             <div className="item-block-count">({itemObj[key].count} Producto{itemObj[key].count > 1 ?'s':''} x ${itemObj[key].unitary})</div>   
           </div>
           } )

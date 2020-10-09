@@ -1,6 +1,5 @@
-import React, { Component, useContext } from "react";
+import React, { useContext } from "react";
 
-import Dropdown from 'react-bootstrap/Dropdown';
 import { CartContext } from '../CartContext';
 import CartIcon from '../CartIcon';
 
