@@ -30,17 +30,14 @@ class NavBar extends Component {
           console.log(doc.id, " => ", doc.data());
            data.push({id:doc.id,...doc.data()});
         });
-        console.log("NAVBAR",data); //
         this.setState({categories:data})
         dataService.setData(data);
  
       }).catch((error)=>{
-        console.log("NAVBAR2",error.message); //
         this.setState({categories:[]}) 
         dataService.setData([]);
       }).finally(()=>{
         //parar loader
-        console.log("NAVBAR3",this.state.categories); //
       });
 
     }

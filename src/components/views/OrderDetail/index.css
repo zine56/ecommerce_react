@@ -1,0 +1,17 @@
+
+.cart-text{
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+.order-block {
+    text-align: left;
+    width: 50%;
+    float: left;
+}
+
+.order-list{
+    width:80%;
+    margin:auto;
+}
+

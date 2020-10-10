@@ -1,0 +1,12 @@
+.order-cart-container{
+    margin-top: 100px;
+    text-align: left;
+
+}
+
+.order-form-container{
+    clear: both;
+    width: 60%;
+    margin: auto;
+    text-align: left;
+}

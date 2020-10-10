@@ -15,6 +15,7 @@ import { LikeCounter } from './components/LikeCounter';
 import { Switch } from 'react-router-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { CartList } from './components/CartList';
+import Order from './components/Order';
 
 export default class App extends Component {
 
@@ -52,6 +53,9 @@ export default class App extends Component {
         </Route>
         <Route exact path='/cart'>
           <CartList/>
+        </Route>
+        <Route exact path='/order'>
+          <Order/>
         </Route>
         </Switch>
 

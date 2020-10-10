@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
 
-import { CartContext } from '../CartContext';
+import { CartContext } from '../../CartContext';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 import './index.css';
-import ProductList from "../views/ProductList";
 
-export const CartList  = () => {
-
-
+export const ProductList  = () => {
   
     const [cart, setCart] = useContext(CartContext)
     const precio = cart.reduce(( accumulator, current) => accumulator + parseFloat(current.price),0);
@@ -43,13 +40,19 @@ export const CartList  = () => {
 
     return (
         <div className='cart-list'>
-
-          <ProductList/>
-
-          <div   className='cart-line cart-buttons'>
-            <Button onClick={vaciarCarro} variant="danger" >Vaciar Carro</Button>
-            <Button as={NavLink} to={'/order'} >Comprar</Button>
-
+          {
+          Object.keys(itemObj).map( (key) => {
+          return <div key={key}  className='cart-line  ' >
+            <div className="item-block-title">{itemObj[key].name}</div>   
+            <div className="item-block-price">${parseFloat(itemObj[key].price)}</div>   
+            <div className="item-block-count">({itemObj[key].count} Producto{itemObj[key].count > 1 ?'s':''} x ${itemObj[key].unitary})</div>   
+          </div>
+          } )
+          }
+          <div   className='cart-line margin-white'>
+            <div className="item-block-title">Total</div>   
+            <div className="item-block-price">${ precio.toFixed(2) }</div>
+            <div className="item-block-count">({ cart.length } Productos)  </div>
           </div>
 
         </div>
@@ -57,5 +60,5 @@ export const CartList  = () => {
   
 }
  
-export default CartList;
+export default ProductList;
 
