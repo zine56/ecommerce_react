@@ -29,6 +29,9 @@ class ItemList extends Component {
     let title= this.props.type === 'all' ? 'Todos los productos': '';
 
     let category = (this.props && this.props.match && this.props.match.params && this.props.match.params.categoryId ? this.props.match.params.categoryId : null)
+
+
+
     let categoryObject;
     if(category){
       categoryObject = this.state.categories.find(cat => {
@@ -81,16 +84,19 @@ class ItemList extends Component {
   }
 
   async componentDidMount() {
-    dataService.getData().subscribe(message => {
-      this.setState({categories:message.value}) 
-      this.updateData()
-    });
+    await new Promise ( (resolve) => {
+      dataService.getData().subscribe(message => {
+        this.setState({categories:message.value}) 
+        resolve()
+      });
+    } ) 
+    this.updateData()
   }
 
   async componentDidUpdate(prevProps){
     if(JSON.stringify(this.props) !== JSON.stringify(prevProps)){  
       this.updateData()
-    }
+    } 
   }
 
   render(){

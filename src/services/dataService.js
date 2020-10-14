@@ -1,6 +1,6 @@
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
-const subject = new Subject();
+const subject = new ReplaySubject([]);
 
 export const dataService = {
     setData: d => subject.next({ value: d }),
