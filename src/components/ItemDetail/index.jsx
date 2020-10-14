@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { CartContext } from '../CartContext';
+import { CartContext } from '../../context/CartContext';
 import './index.css';
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

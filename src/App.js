@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import NavBar from "./components/NavBar";
-import { CartProvider } from "./components/CartContext";
-import { CounterProvider } from "./components/CounterContext";
+import { CartProvider } from "./context/CartContext";
+import { CounterProvider } from "./context/CounterContext";
 
 import Home from "./components/Home";
 import ItemList from './components/ItemList';

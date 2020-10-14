@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CounterContext } from '../CounterContext';
+import { CounterContext } from '../../context/CounterContext';
 import Button from 'react-bootstrap/Button';
 
 import './index.css';

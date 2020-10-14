@@ -1,6 +1,6 @@
 import React, { useContext, Component } from "react";
 
-import { CartContext } from '../CartContext';
+import { CartContext } from '../../context/CartContext';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 

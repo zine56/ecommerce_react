@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { CounterContext } from '../CounterContext';
+import { CounterContext } from '../../context/CounterContext';
 
 import './index.css';
 
