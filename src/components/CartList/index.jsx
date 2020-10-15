@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 import './index.css';
-import ProductList from "../views/ProductList";
+import ProductList from "../../components/ProductList";
 
 export const CartList  = () => {
 

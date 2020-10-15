@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 
-import { Item } from '../Item';
+import { Item } from '../../components/Item';
 
 import './index.css';
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";

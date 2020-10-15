@@ -4,7 +4,8 @@ import './index.css';
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from 'react-bootstrap/Button';
-import {ItemCount} from '../ItemCount';
+import {ItemCount} from '../../components/ItemCount';
+import { NavLink } from 'react-router-dom';
 
 import {db} from '../../services/firestore';
 
@@ -30,7 +31,7 @@ import {db} from '../../services/firestore';
       .then(doc => {
 
         if(!doc.exists){
-          this.setState({data:{}, count:0}) 
+          this.setState({data:[], count:0}) 
         } else {
           const data = {id:doc.id,...doc.data()};
 
@@ -88,6 +89,19 @@ import {db} from '../../services/firestore';
 
 
     let image = (this.state.data && this.state.data.image ? this.state.data.image : '');
+
+    if(this.state.data && this.state.data.length === 0){
+      return (
+        <div className='empty-product-list'>
+          Producto no encontrado.
+          <div className="">
+              <Button as={NavLink} to={'/'}>Volver al Home</Button>
+            </div> 
+        </div>
+
+      )
+    }
+
     return (
       
     (!this.state.data) ?  <div className='empty-product-list'> <FontAwesomeIcon icon={faSpinner} spin /> Cargando...</div>: <div>

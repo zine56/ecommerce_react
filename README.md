@@ -3,8 +3,7 @@
 - se agrego Bootstrap como framework css y font awesome para los iconos
 - se usaron tres colecciones de firebase, una de productos, otra de categorias
 - se usa un replaysubject de rxjs para compartir la data de las categorias existentes entre navbar y la pagina de productos, para poder mostrar el titulo de la categoria actual sin tener que estar consultando cada ve que se cargue la pagina
-- el flujo de compra hace lo que es comun y requerido en un flujo de compra 'oficial' es decir, una vez que se crea la orden
-se vacia el carro de compra 
+- el flujo de compra hace lo que es comun y requerido en un flujo de compra 'oficial' es decir, una vez que se crea la orden se vacia el carro de compra 
 
 ## Website 
 

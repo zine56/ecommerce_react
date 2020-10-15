@@ -5,12 +5,12 @@ import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 import './index.css';
-import ProductList from "../views/ProductList";
+import ProductList from "../../components/ProductList";
 import {db} from '../../services/firestore';
 
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
-import OrderDetail from '../views/OrderDetail';
+import OrderDetail from '../../components/OrderDetail';
 
 export default class Order extends Component {
     static contextType = CartContext
@@ -23,8 +23,10 @@ export default class Order extends Component {
            date:null,
            cart:[],
            total:0,
+           status:'',
            fields:{
                name:'',
+               lastName:'',
                phone:'',
                email:'',
                email2:''
@@ -79,6 +81,24 @@ export default class Order extends Component {
          }
   
         }
+
+        if(!field || field === "lastName"){
+
+            //Name
+            if(!fields["lastName"]){
+                formIsValid = false;
+                errors["lastName"] = "No puede estar vacio";
+             }
+       
+             if(typeof fields["lastName"] !== "undefined"){
+                if(!fields["lastName"].match(/^[a-zA-Z ñÑ]+$/)){
+                   formIsValid = false;
+                   errors["lastName"] = "Solo letras se permiten para el apellido";
+                }        
+             }
+      
+            }
+
 
         if(!field || field === "email"){
         //Email
@@ -136,22 +156,28 @@ export default class Order extends Component {
     handleSubmit (event) {
         event.preventDefault();
         if(this.handleValidation()){
-            this.setState({loading:true})
-            //setear el date en la orden
-            //ir a pegar con los datos
+
+            let currentdate = new Date();
+            let datetime =  currentdate.toLocaleString();
+            let date =firebase.firestore.Timestamp.fromDate(currentdate);
+
+            this.setState({loading:true,status:'Generada'})
              db.collection('orders').add({
                 buyer: {
                     email: this.state.fields["email"],
                     name: this.state.fields["name"],
+                    lastName: this.state.fields["lastName"],
                     phone: this.state.fields["phone"]
                 },
                 items :  this.state.cart,
-                date: firebase.firestore.Timestamp.fromDate(new Date()),
+                date: date,
+                status: this.state.status,
                 total: this.state.total
             }).then((result)=>{
+                console.log("RESULT",result)
                 const [cart, setCart] = this.context
                 setCart(curr=>[]);
-                this.setState({orderId:result.id,date:firebase.firestore.Timestamp.fromDate(new Date())})
+                this.setState({orderId:result.id,date:datetime})
 
             }).catch((error)=>{
                 console.log("error",error.message)
@@ -210,12 +236,17 @@ export default class Order extends Component {
                 <div className="order-form-container">
                     <form id='order-form' onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">nombre</label>
+                        <label htmlFor="name">Nombre</label>
                         <input refs="name" type="text" className="form-control" value={this.state.fields["name"]} onChange={this.handleChange.bind(this, "name")}/>
                         <span style={{color: "red"}}>{this.state.errors["name"]}</span>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="phone">telefono</label>
+                        <label htmlFor="lastName">Apellidos</label>
+                        <input refs="lastName" type="text" className="form-control" value={this.state.fields["lastName"]} onChange={this.handleChange.bind(this, "lastName")}/>
+                        <span style={{color: "red"}}>{this.state.errors["lastName"]}</span>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="phone">Telefono</label>
                         <input refs="phone" type="text" pattern="[0-9]*" className="form-control"  value={this.state.fields["phone"]} onChange={this.handleChange.bind(this, "phone")}/>
                         <span style={{color: "red"}}>{this.state.errors["phone"]}</span>
                     </div>
@@ -225,7 +256,7 @@ export default class Order extends Component {
                         <span style={{color: "red"}}>{this.state.errors["email"]}</span>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">repita Email</label>
+                        <label htmlFor="exampleInputEmail1">Repita Email</label>
                         <input refs="email2" type="email" className="form-control"  value={this.state.fields["email2"]} onChange={this.handleChange.bind(this, "email2")} />
                         <span style={{color: "red"}}>{this.state.errors["email2"]}</span>
                     </div>

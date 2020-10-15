@@ -26,10 +26,16 @@ export const OrderDetail  = ({props}) => {
             <div className="order-block">{ props.orderId }</div>
             <div className="order-block">Nombre</div>   
             <div className="order-block">{ props.fields.name }</div>
+            <div className="order-block">Apellidos</div>   
+            <div className="order-block">{ props.fields.lastName }</div>
             <div className="order-block">Telefono</div>   
             <div className="order-block">{ props.fields.phone }</div>
             <div className="order-block">Email</div>   
             <div className="order-block">{ props.fields.email }</div>
+            <div className="order-block">Fecha:</div>   
+            <div className="order-block">{ props.date }</div>
+            <div className="order-block">Estado:</div>   
+            <div className="order-block">{ props.status }</div>
             <div className="order-block">Productos de la orden:</div>   
 
           </div>

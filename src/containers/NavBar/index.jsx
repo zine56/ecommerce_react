@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import Cart from '../Cart';
+import Cart from '../../components/Cart';
 
 import './index.css';
 import { NavLink } from 'react-router-dom';
