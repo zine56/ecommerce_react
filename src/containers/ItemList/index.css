@@ -7,3 +7,9 @@
     margin-top: 60px;
     font-size: 24px;
 }
+.title-product{
+  font-size: 14px;
+}
+.title-product:hover{
+    text-decoration: none !important;
+}

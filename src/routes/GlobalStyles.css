@@ -87,29 +87,34 @@
 
 
 .Header-List-Link , .title-product, .price-product{
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 5px;
   color: white !important;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .Header-List-Link:active, .title-product:active, .price-product:active{
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 5px;
   color: white !important;
 }
 
 .Header-List-Link:hover, .title-product:hover, .price-product:hover{
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 5px;
   color: white !important;
 }
 
 .img-product{
+  text-decoration: none !important;
   width:100px;
   height:150px;
 }
 
-.title-product{}
+
 
 .item-block-title{
   width:50%;

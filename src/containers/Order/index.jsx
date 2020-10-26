@@ -226,7 +226,7 @@ export default class Order extends Component {
                 :<div>
                     
                 <div className="order-cart-container">
-                    <div>
+                    <div className='cart-title-text'>
                         Productos:
                     </div>
                     <div>

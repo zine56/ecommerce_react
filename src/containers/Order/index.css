@@ -1,7 +1,7 @@
 .order-cart-container{
     margin-top: 100px;
     text-align: left;
-
+    font-size:14px !important;
 }
 
 .order-form-container{
@@ -9,4 +9,13 @@
     width: 60%;
     margin: auto;
     text-align: left;
+}
+
+.cart-title-text{
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.form-group{
+    font-size:16px
 }

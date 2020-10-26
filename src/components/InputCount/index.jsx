@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './index.css';
+
 /**
  * The Input Component.
  * 
@@ -11,7 +13,7 @@ import React from 'react';
 function InputCount(props) {
   console.log(props);
   return (
-    <input onChange={props.handleChange} value={props.count}/>
+    <input className="countInput" onChange={props.handleChange} value={props.count}/>
   )
 }
 

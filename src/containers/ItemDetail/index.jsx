@@ -105,24 +105,27 @@ import {db} from '../../services/firestore';
     return (
       
     (!this.state.data) ?  <div className='empty-product-list'> <FontAwesomeIcon icon={faSpinner} spin /> Cargando...</div>: <div>
-                      <div><img src={image} className='img-product' onError={this.handleImageError} alt="producto" /></div>
+                      <div><img src={image} className='img-product-detail' onError={this.handleImageError} alt="producto" /></div>
                 <div>{this.state.data.name}</div> 
                   <div>
                     ${parseFloat(this.state.data.price).toFixed(2)}
                   </div>
-                  <div> 
+                  <div className='button-count-detail'> 
 
                     <ItemCount count={this.state.count} handleAdd={this.handleAdd} handleSubstract={this.handleSubstract} 
                     handleChange={this.handleChange} />
-  <Button onClick={this.agregarAlCarro}>Comprar {this.state.count ? this.state.count : ''}</Button>
+  <Button className='button-add-detail' onClick={this.agregarAlCarro}>Comprar {this.state.count ? this.state.count : ''}</Button>
                   </div>
                   
-                  <div>
+                  <div >
+                    <div className='description-detail-title'>
                     Descripcion:
+                    </div>
+                    <div  className='description-detail-text' dangerouslySetInnerHTML={{ __html: this.state.data.description }} >
+                    </div>         
                   </div> 
                   
-                  <div  dangerouslySetInnerHTML={{ __html: this.state.data.description }} >
-                  </div>          
+ 
     </div>
     
     )

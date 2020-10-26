@@ -49,7 +49,7 @@ export const ProductList  = () => {
           </div>
           } )
           }
-          <div   className='cart-line margin-white'>
+          <div   className='cart-line margin-white cart-line-totals'>
             <div className="item-block-title">Total</div>   
             <div className="item-block-price">${ precio.toFixed(2) }</div>
             <div className="item-block-count">({ cart.length } Productos)  </div>

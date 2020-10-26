@@ -1,4 +1,20 @@
-.product{
-    width:33%;
-    float:left;
+.img-product-detail {
+   width:300px;
+}
+
+.button-count-detail{
+    padding:10px;
+}
+
+.button-add-detail{
+    margin:10px;
+}
+
+.description-detail-title{
+    font-weight: 800;
+}
+
+.description-detail-text{
+    font-size: 14px;
+
 }
